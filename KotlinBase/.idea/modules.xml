@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/19201987/BaseMVVM.iml" filepath="$PROJECT_DIR$/.idea/modules/19201987/BaseMVVM.iml" group="shop-kotlin/BaseMVVM" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KotlinBase.iml" filepath="$PROJECT_DIR$/.idea/modules/KotlinBase.iml" group="shop-kotlin/KotlinBase" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1627276401/app.iml" filepath="$PROJECT_DIR$/.idea/modules/-1627276401/app.iml" group="shop-kotlin/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/424569469/shop-kotlin.iml" filepath="$PROJECT_DIR$/.idea/modules/424569469/shop-kotlin.iml" group="shop-kotlin" />
+    </modules>
+  </component>
+</project>

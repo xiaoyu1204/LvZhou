@@ -40,9 +40,6 @@ android {
         enabled = true
     }
 
-
-    // maven { url 'https://jitpack.io' }   主项目中加
-
 }
 
 dependencies {
