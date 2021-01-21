@@ -10,6 +10,7 @@ import android.text.Spanned
 import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -30,17 +31,23 @@ class GuidanceActivity : AppCompatActivity() {
 
     private var popupWindow: PopupWindow? = null
     private var guidance:String? = null
-    private var login:String? = null
+    private var elselogin:String? = null
+    private var thislogin:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guidance)
         guidance = SpUtils.instance!!.getString("guidance")
-        //登录
-        login = SpUtils.instance!!.getString("login")
-        if(!TextUtils.isEmpty(login) && !TextUtils.isEmpty(guidance)){
+        //其他登录
+        elselogin = SpUtils.instance!!.getString("elselogin")
+        //本地登录
+        thislogin = SpUtils.instance!!.getString("thislogin")
+        if(!TextUtils.isEmpty(elselogin) && !TextUtils.isEmpty(guidance)){
+            initTimer()
+        }else if(!TextUtils.isEmpty(thislogin) && !TextUtils.isEmpty(guidance)){
             initTimer()
         }
+
     }
 
     //自动弹出pw

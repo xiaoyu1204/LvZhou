@@ -107,8 +107,11 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     private fun initPhone_Login() {
         var btn_phone = btn_register_phone_login.text.toString()
         if(btn_phone.equals("本机号码一键登录")){
+            val thislogin = "已经本机登录"
+            SpUtils.instance!!.setValue("thislogin",thislogin)
             //跳转
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
         if(btn_phone.equals("获取短信验证码")) {
             var et_phone = et_register_phone.text.toString()
@@ -152,8 +155,8 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             override fun inputComplete() {
                 var editContent = verify_code_view_register.editContent
                 if(editContent!!.length == 6){
-                    val login = "已经登录"
-                    SpUtils.instance!!.setValue("login",login)
+                    val elselogin = "已经其他登录"
+                    SpUtils.instance!!.setValue("elselogin",elselogin)
                     //跳转
                     startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
                     finish()
