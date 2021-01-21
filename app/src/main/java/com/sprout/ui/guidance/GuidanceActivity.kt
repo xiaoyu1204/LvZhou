@@ -15,20 +15,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
-import androidx.core.content.ContextCompat.startActivity
 import com.example.basemvvm.utils.SpUtils
 import com.sprout.R
 import com.sprout.ui.register.RegisterActivity
-
 import kotlinx.android.synthetic.main.activity_guidance.*
 import kotlinx.android.synthetic.main.layout_guidance_pop.view.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-
-
-import io.reactivex.internal.disposables.DisposableHelper.dispose
 
 class GuidanceActivity : AppCompatActivity() {
 
