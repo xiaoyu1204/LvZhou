@@ -13,6 +13,7 @@ import com.example.basemvvm.utils.ToastUtils
 import com.example.kotlinbase.utils.CustomVideoView
 import com.sprout.R
 import com.sprout.ui.main.main.MainActivity
+import com.sprout.ui.sex.SexActivity
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -20,8 +21,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     //创建播放视频的控件对象
     private var videoview: CustomVideoView? = null
-    //验证码
-    var disposable : Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +43,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 //            Environment.getExternalStorageDirectory().toString() + "/Pictures/login_bg.mp4"
 //        )
 //        videoview!!.setVideoPath( "http://9890.vod.myqcloud.com/9890_4e292f9a3dd011e6b4078980237cc3d3.f20.mp4" )
-
         //播放
         videoview!!.start()
         //循环播放
@@ -110,7 +108,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             val thislogin = "已经本机登录"
             SpUtils.instance!!.setValue("thislogin",thislogin)
             //跳转
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, SexActivity::class.java))
             finish()
         }
         if(btn_phone.equals("获取短信验证码")) {
@@ -158,7 +156,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                     val elselogin = "已经其他登录"
                     SpUtils.instance!!.setValue("elselogin",elselogin)
                     //跳转
-                    startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
+                    startActivity(Intent(this@RegisterActivity, SexActivity::class.java))
                     finish()
                 }
             }

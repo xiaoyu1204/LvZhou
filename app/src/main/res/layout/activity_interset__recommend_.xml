@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.interest_recommend.Interset_Recommend_Activity">
+
+        <TextView
+            android:id="@+id/tv_myInterest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_10"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:text="你可能感兴趣的人"
+            android:textColor="#000"
+            android:textSize="@dimen/dp_30"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_interest_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_10"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:text="基于你选择的兴趣分类推荐"
+            android:textSize="@dimen/dp_18"
+            app:layout_constraintTop_toBottomOf="@id/tv_myInterest" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

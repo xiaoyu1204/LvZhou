@@ -93,5 +93,7 @@ dependencies {
     implementation 'com.xj.marqueeView:marqueeView:0.1.20'
     //图片缩放
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    //本地相机相册选择图片
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.3'
 
 }

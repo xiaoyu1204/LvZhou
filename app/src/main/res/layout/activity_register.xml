@@ -142,21 +142,21 @@
                 android:id="@+id/iv_register_wb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/selectr_lregister_img_wb" />
+                android:src="@drawable/selectr_register_img_wb" />
 
             <ImageView
                 android:id="@+id/iv_register_wx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/selectr_lregister_img_wechat" />
+                android:src="@drawable/selectr_register_img_wechat" />
 
             <ImageView
                 android:id="@+id/iv_register_qq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/selectr_lregister_img_qq" />
+                android:src="@drawable/selectr_register_img_qq" />
 
         </LinearLayout>
 

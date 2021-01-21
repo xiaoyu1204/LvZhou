@@ -18,14 +18,17 @@ import android.view.ViewGroup
 import android.widget.PopupWindow
 import com.example.basemvvm.utils.SpUtils
 import com.sprout.R
+import com.sprout.ui.interest.InterestActivity
 import com.sprout.ui.main.main.MainActivity
 import com.sprout.ui.register.RegisterActivity
+import com.sprout.ui.sex.SexActivity
 import kotlinx.android.synthetic.main.activity_guidance.*
 import kotlinx.android.synthetic.main.layout_guidance_pop.view.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import org.w3c.dom.Text
 
 class GuidanceActivity : AppCompatActivity() {
 
@@ -33,19 +36,32 @@ class GuidanceActivity : AppCompatActivity() {
     private var guidance:String? = null
     private var elselogin:String? = null
     private var thislogin:String? = null
+    private var sex:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guidance)
+        //引导页
         guidance = SpUtils.instance!!.getString("guidance")
         //其他登录
         elselogin = SpUtils.instance!!.getString("elselogin")
         //本地登录
         thislogin = SpUtils.instance!!.getString("thislogin")
+        //性别
+        sex = SpUtils.instance!!.getString("sex")
+
+        if(!TextUtils.isEmpty(guidance)){
+            initTimerRe()
+        }
+
         if(!TextUtils.isEmpty(elselogin) && !TextUtils.isEmpty(guidance)){
-            initTimer()
+            initTimerSex()
         }else if(!TextUtils.isEmpty(thislogin) && !TextUtils.isEmpty(guidance)){
-            initTimer()
+            initTimerSex()
+        }
+
+        if(!TextUtils.isEmpty(elselogin) || !TextUtils.isEmpty(thislogin) && !TextUtils.isEmpty(guidance) && !TextUtils.isEmpty(sex)){
+            initTimerInter()
         }
 
     }
@@ -53,10 +69,7 @@ class GuidanceActivity : AppCompatActivity() {
     //自动弹出pw
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        if (!TextUtils.isEmpty(guidance)){
-            //跳转到注册界面
-            initTimerRe()
-        }else{
+        if (TextUtils.isEmpty(guidance)){
             initPw()
         }
     }
@@ -130,10 +143,10 @@ class GuidanceActivity : AppCompatActivity() {
         window.attributes = attributes
     }
 
-    override fun onPause() {
-        super.onPause()
-        popupWindow!!.dismiss()
-    }
+//    override fun onPause() {
+//        super.onPause()
+//        popupWindow!!.dismiss()
+//    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -141,6 +154,7 @@ class GuidanceActivity : AppCompatActivity() {
             popupWindow!!.dismiss()
             popupWindow = null
         }
+        finishAndRemoveTask()
     }
 
     //倒计时注册
@@ -157,13 +171,26 @@ class GuidanceActivity : AppCompatActivity() {
     }
 
     //倒计时引导页
-    fun initTimer() {
+    fun initTimerSex() {
         Observable.intervalRange(0,6,0,1,TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 val l = 5 - it
                 if(l == 0L) {
-                    startActivity(Intent(this,MainActivity::class.java))
+                    startActivity(Intent(this,SexActivity::class.java))
+                    finish()
+                }
+            }
+    }
+
+    //倒计时性别
+    fun initTimerInter() {
+        Observable.intervalRange(0,6,0,1,TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                val l = 5 - it
+                if(l == 0L) {
+                    startActivity(Intent(this,InterestActivity::class.java))
                     finish()
                 }
             }
