@@ -6,6 +6,9 @@ import android.util.AttributeSet
 import android.view.KeyEvent
 import android.widget.VideoView
 
+/**
+ * Created by DaQiE on 2017/2/20 0020.
+ */
 class CustomVideoView : VideoView {
     constructor(context: Context?) : super(context) {}
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}

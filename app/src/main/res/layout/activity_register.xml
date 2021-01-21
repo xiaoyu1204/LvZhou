@@ -31,25 +31,48 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <LinearLayout
+            android:background="@drawable/shape_white_lucency_bk_10"
+            android:orientation="horizontal"
             android:visibility="gone"
-            android:id="@+id/tv_register_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ll_register_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
             android:layout_marginTop="60dp"
-            android:text="150*****574"
-            android:textColor="#fff"
-            android:textSize="22dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_rehister_splendid" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_rehister_splendid"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_30">
+
+            <TextView
+                android:text="+86"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_20"
+                android:gravity="center"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                />
+
+            <EditText
+                android:id="@+id/et_register_phone"
+                android:paddingLeft="@dimen/dp_4"
+                android:textSize="@dimen/dp_18"
+                android:textColorHint="@color/white"
+                android:hint="请输入手机号"
+                android:background="@null"
+                android:layout_weight="7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_register_phone_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_rehister_splendid"
-            android:layout_marginTop="@dimen/dp_100"
+            android:layout_marginTop="@dimen/dp_115"
             android:layout_marginLeft="@dimen/dp_30"
             android:layout_marginRight="@dimen/dp_30"
             android:background="@drawable/icon_wow_pay_send_button_normal"
@@ -78,20 +101,20 @@
             app:layout_constraintBottom_toTopOf="@id/tv_register_text">
 
             <ImageView
-                android:id="@+id/iv_wb"
+                android:id="@+id/iv_register_wb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/selectr_lregister_img_wb" />
 
             <ImageView
-                android:id="@+id/iv_wx"
+                android:id="@+id/iv_register_wx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/selectr_lregister_img_wechat" />
 
             <ImageView
-                android:id="@+id/iv_qq"
+                android:id="@+id/iv_register_qq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
