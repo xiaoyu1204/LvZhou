@@ -34,13 +34,6 @@ class GuidanceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guidance)
         guidance = SpUtils.instance!!.getString("guidance")
-        if (!TextUtils.isEmpty(guidance)) {
-            //跳转到注册界面
-            initTimerRe()
-        }else {
-            //没值 ==  没注册  要注册
-            onWindowFocusChanged(hasWindowFocus())
-        }
     }
 
     //自动弹出pw
@@ -48,6 +41,9 @@ class GuidanceActivity : AppCompatActivity() {
         super.onWindowFocusChanged(hasFocus)
         if (TextUtils.isEmpty(guidance)){
             initPw()
+        }else{
+            //跳转到注册界面
+            initTimerRe()
         }
     }
 
@@ -80,11 +76,10 @@ class GuidanceActivity : AppCompatActivity() {
         //进入下一界面
         popupView.btn_guidance_ok.setOnClickListener {
             popupWindow!!.dismiss()//关闭弹窗
-            initPwNo()
             initTimerRe()
+            initPwNo()
             val ok = "已经进入过引导页"
             SpUtils.instance!!.setValue("guidance", ok)
-            finishAndRemoveTask()
         }
 
         //在按钮的下方弹出  无偏移 第一种方式
@@ -119,6 +114,19 @@ class GuidanceActivity : AppCompatActivity() {
         val attributes = window.attributes
         attributes.alpha = 1f
         window.attributes = attributes
+    }
+
+    override fun onPause() {
+        super.onPause()
+        popupWindow!!.dismiss()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if(popupWindow != null && popupWindow!!.isShowing()){
+            popupWindow!!.dismiss()
+            popupWindow = null
+        }
     }
 
     //倒计时注册
