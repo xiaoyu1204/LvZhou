@@ -5,6 +5,9 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.appcompat.widget.AppCompatEditText
 
+/**
+ * 验证码
+ */
 class MyEditText : AppCompatEditText {
     private var lastTime: Long = 0
 

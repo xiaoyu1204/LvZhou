@@ -10,6 +10,9 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.sprout.R
 
+/**
+ * 验证码
+ */
 class VerifyCodeView @JvmOverloads constructor(
     context: Context?,
     attrs: AttributeSet? = null,
