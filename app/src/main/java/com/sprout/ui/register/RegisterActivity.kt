@@ -7,22 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.*
 import android.text.style.ForegroundColorSpan
-import android.util.Log
-import android.view.KeyEvent
 import android.view.View
-import android.widget.EditText
-import android.widget.Toast
-import androidx.annotation.Nullable
+import com.example.basemvvm.utils.SpUtils
 import com.example.basemvvm.utils.ToastUtils
 import com.example.kotlinbase.utils.CustomVideoView
 import com.sprout.R
-import com.sprout.ui.main.MainActivity
-import io.reactivex.Observable
+import com.sprout.ui.main.main.MainActivity
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_register.*
-import java.util.concurrent.TimeUnit
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -116,7 +108,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         var btn_phone = btn_register_phone_login.text.toString()
         if(btn_phone.equals("本机号码一键登录")){
             //跳转
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
         if(btn_phone.equals("获取短信验证码")) {
             var et_phone = et_register_phone.text.toString()
@@ -160,8 +152,11 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             override fun inputComplete() {
                 var editContent = verify_code_view_register.editContent
                 if(editContent!!.length == 6){
+                    val login = "已经登录"
+                    SpUtils.instance!!.setValue("login",login)
                     //跳转
-                    startActivity(Intent(this@RegisterActivity,MainActivity::class.java))
+                    startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
+                    finish()
                 }
             }
 

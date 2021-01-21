@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.PopupWindow
 import com.example.basemvvm.utils.SpUtils
 import com.sprout.R
+import com.sprout.ui.main.main.MainActivity
 import com.sprout.ui.register.RegisterActivity
 import kotlinx.android.synthetic.main.activity_guidance.*
 import kotlinx.android.synthetic.main.layout_guidance_pop.view.*
@@ -29,21 +30,27 @@ class GuidanceActivity : AppCompatActivity() {
 
     private var popupWindow: PopupWindow? = null
     private var guidance:String? = null
+    private var login:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guidance)
         guidance = SpUtils.instance!!.getString("guidance")
+        //登录
+        login = SpUtils.instance!!.getString("login")
+        if(!TextUtils.isEmpty(login) && !TextUtils.isEmpty(guidance)){
+            initTimer()
+        }
     }
 
     //自动弹出pw
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        if (TextUtils.isEmpty(guidance)){
-            initPw()
-        }else{
+        if (!TextUtils.isEmpty(guidance)){
             //跳转到注册界面
             initTimerRe()
+        }else{
+            initPw()
         }
     }
 
@@ -142,5 +149,17 @@ class GuidanceActivity : AppCompatActivity() {
             }
     }
 
+    //倒计时引导页
+    fun initTimer() {
+        Observable.intervalRange(0,6,0,1,TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                val l = 5 - it
+                if(l == 0L) {
+                    startActivity(Intent(this,MainActivity::class.java))
+                    finish()
+                }
+            }
+    }
 
 }
