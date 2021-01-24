@@ -1,5 +1,7 @@
 package com.shop.base
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,18 +9,23 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-abstract class BaseFragment<VM:BaseViewModel,DB:ViewDataBinding>(var layoutId:Int,var vmClass:Class<VM>):Fragment() {
+abstract class BaseFragment<VM: ViewModel,DB:ViewDataBinding>(var layoutId:Int, var vmClass:Class<VM>):Fragment() {
 
     protected lateinit var mViewModel:VM
     protected lateinit var mDataBinding:DB
+    protected lateinit var mContext: Context
+    protected lateinit var mActivity: Activity
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        mContext = this.context!!
+        mActivity = activity!!
         mDataBinding = DataBindingUtil.inflate(inflater,layoutId,container,false)
         mViewModel = ViewModelProvider(this).get(vmClass)
         var mView = mDataBinding.root

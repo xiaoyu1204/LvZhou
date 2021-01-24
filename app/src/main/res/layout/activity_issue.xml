@@ -4,15 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="com.sprout.viewmodel.main.issue.IssueViewModel"/>
+        <variable
+            name="issue"
+            type="IssueViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.issue.IssueActivity">
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_user_back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/txt_next"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="下一步"
+                app:layout_constraintRight_toRightOf="parent"
+                android:gravity="center"/>
 
-        <
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toBottomOf="@id/layout_title"
+            app:layout_constraintBottom_toTopOf="@id/txt_tag"/>
+        <TextView
+            android:id="@+id/txt_tag"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:text="添加标签"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPager"
+            android:gravity="center"
+            android:textSize="20sp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

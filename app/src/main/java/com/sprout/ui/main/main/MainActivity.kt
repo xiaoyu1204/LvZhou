@@ -1,9 +1,7 @@
 package com.sprout.ui.main.main
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.shop.base.BaseActivity
 import com.sprout.R
@@ -77,6 +75,7 @@ class MainActivity : BaseActivity<MainViewModel,ActivityMainBinding>(
                     .hide(mViewModel.fragments.get(0))
             }
         }
+        bs.commit()
     }
 
     //TODO 重置所有属性

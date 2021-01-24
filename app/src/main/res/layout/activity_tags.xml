@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.sprout.viewmodel.main.issue.TagsViewModel"/>
+        <variable
+            name="tags"
+            type="TagsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img_brand"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/img_good"
+            android:src="@drawable/selector_photo_brand" />
+        <ImageView
+            android:id="@+id/img_good"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_40"
+            app:layout_constraintLeft_toRightOf="@id/img_brand"
+            app:layout_constraintRight_toLeftOf="@id/img_user"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/selector_photo_commodity" />
+        <ImageView
+            android:id="@+id/img_user"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_40"
+            app:layout_constraintLeft_toRightOf="@id/img_good"
+            app:layout_constraintRight_toLeftOf="@id/img_address"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/selector_photo_user" />
+        <ImageView
+            android:id="@+id/img_address"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_40"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/img_user"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/selector_photo_location" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyTags"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toBottomOf="@id/img_brand"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
