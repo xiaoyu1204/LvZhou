@@ -1,5 +1,6 @@
 package com.sprout.ui.main.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.fragment.app.FragmentManager
 import com.shop.base.BaseActivity
 import com.sprout.R
 import com.sprout.databinding.ActivityMainBinding
+import com.sprout.ui.issue.IssueActivity
 import com.sprout.viewmodel.main.MainViewModel
 
 //TODO 绿洲搭建页面
@@ -55,7 +57,8 @@ class MainActivity : BaseActivity<MainViewModel,ActivityMainBinding>(
             }
             //加号
             R.id.layout_issue -> {
-
+                val intent = Intent(this, IssueActivity::class.java)
+                startActivity(intent)
             }
             //消息
             R.id.layout_info -> {

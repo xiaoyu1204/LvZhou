@@ -13,7 +13,7 @@
         tools:context=".ui.interest_recommend.Interset_Recommend_Activity">
 
         <TextView
-            android:id="@+id/tv_myInterest"
+            android:id="@+id/tv_myInterest_recommend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dp_10"
@@ -24,14 +24,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_interest_select"
+            android:id="@+id/tv_interest_recommend_select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dp_10"
             android:layout_marginHorizontal="@dimen/dp_20"
             android:text="基于你选择的兴趣分类推荐"
             android:textSize="@dimen/dp_18"
-            app:layout_constraintTop_toBottomOf="@id/tv_myInterest" />
+            app:layout_constraintTop_toBottomOf="@id/tv_myInterest_recommend" />
+
+        <Button
+            android:id="@+id/btn_interest_recommend_next_step"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_margin="@dimen/dp_40"
+            android:background="@drawable/icon_wow_pay_send_button_pressed"
+            android:text="下一步"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp_16"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

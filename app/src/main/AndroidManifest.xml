@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.interest_recommend.Interset_Recommend_Activity"></activity>
+        <activity android:name=".ui.issue.IssueActivity"></activity>
+        <activity android:name=".ui.interest_recommend.Interset_Recommend_Activity" />
         <activity android:name=".ui.interest.InterestActivity" />
         <activity android:name=".ui.sex.SexActivity" />
         <activity android:name=".ui.register.RegisterActivity" />

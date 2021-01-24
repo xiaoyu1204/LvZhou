@@ -7,7 +7,7 @@ import com.sprout.ui.main.home.attention.AttentionFragment
 import com.sprout.ui.main.home.local.LocalFragment
 import com.sprout.ui.main.home.recommend.RecommendFragment
 
-class HomeViewModel:BaseViewModel(Injection.repository) {
+class HomeViewModel:BaseViewModel<Any?>(Injection.repository) {
 
     var fragments:MutableList<Fragment> = mutableListOf()
 

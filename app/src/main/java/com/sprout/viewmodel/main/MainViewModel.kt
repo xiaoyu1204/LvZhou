@@ -9,7 +9,7 @@ import com.sprout.ui.main.info.InfoFragment
 import com.sprout.ui.main.me.MeFragment
 import com.sprout.ui.main.search.SearchFragment
 
-class MainViewModel:BaseViewModel(Injection.repository){
+class MainViewModel:BaseViewModel<Any?>(Injection.repository){
 
     var fragments:MutableList<Fragment> = mutableListOf()
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.example.basemvvm.utils.SpUtils
 import com.sprout.R
 import com.sprout.ui.interest_recommend.Interset_Recommend_Activity
 import kotlinx.android.synthetic.main.activity_interest.*
@@ -23,9 +24,10 @@ class InterestActivity : AppCompatActivity() {
                         Toast.makeText(this@InterestActivity, "111", Toast.LENGTH_SHORT).show()
                     }
                 }
-
+                val interset = "选择分类完成"
+                SpUtils.instance!!.setValue("interset",interset)
                 startActivity(Intent(this@InterestActivity,Interset_Recommend_Activity::class.java) )
-
+                finish()
             }
 
         })

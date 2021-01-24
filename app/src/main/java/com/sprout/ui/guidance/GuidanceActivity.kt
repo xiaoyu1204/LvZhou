@@ -19,6 +19,7 @@ import android.widget.PopupWindow
 import com.example.basemvvm.utils.SpUtils
 import com.sprout.R
 import com.sprout.ui.interest.InterestActivity
+import com.sprout.ui.interest_recommend.Interset_Recommend_Activity
 import com.sprout.ui.main.main.MainActivity
 import com.sprout.ui.register.RegisterActivity
 import com.sprout.ui.sex.SexActivity
@@ -37,6 +38,8 @@ class GuidanceActivity : AppCompatActivity() {
     private var elselogin:String? = null
     private var thislogin:String? = null
     private var sex:String? = null
+    private var interset:String? = null
+    private var interset_recommend:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,19 +52,27 @@ class GuidanceActivity : AppCompatActivity() {
         thislogin = SpUtils.instance!!.getString("thislogin")
         //性别
         sex = SpUtils.instance!!.getString("sex")
+        //分类兴趣
+        interset = SpUtils.instance!!.getString("interset")
+        //分类感兴趣的人
+        interset_recommend = SpUtils.instance!!.getString("interset_recommend")
 
+        //引导页是否加载过
         if(!TextUtils.isEmpty(guidance)){
             initTimerRe()
         }
-
-        if(!TextUtils.isEmpty(elselogin) && !TextUtils.isEmpty(guidance)){
+        //是否登录过
+        if( (!TextUtils.isEmpty(thislogin) || !TextUtils.isEmpty(elselogin) )&& !TextUtils.isEmpty(guidance)){
             initTimerSex()
-        }else if(!TextUtils.isEmpty(thislogin) && !TextUtils.isEmpty(guidance)){
-            initTimerSex()
+        }else{
+            initTimerRe()
         }
-
-        if(!TextUtils.isEmpty(elselogin) || !TextUtils.isEmpty(thislogin) && !TextUtils.isEmpty(guidance) && !TextUtils.isEmpty(sex)){
-            initTimerInter()
+        //登录后是否选择引导教程
+        if( (!TextUtils.isEmpty(thislogin) || !TextUtils.isEmpty(elselogin) )&& !TextUtils.isEmpty(guidance) && !TextUtils.isEmpty(sex)
+            && !TextUtils.isEmpty(interset) && !TextUtils.isEmpty(interset_recommend)){
+            initTimer()
+        }else{
+            initTimerSex()
         }
 
     }
@@ -157,7 +168,7 @@ class GuidanceActivity : AppCompatActivity() {
         finishAndRemoveTask()
     }
 
-    //倒计时注册
+    //倒计时注册--引导页
     fun initTimerRe() {
         Observable.intervalRange(0,6,0,1,TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
@@ -170,7 +181,7 @@ class GuidanceActivity : AppCompatActivity() {
             }
     }
 
-    //倒计时引导页
+    //倒计时引导页--性别
     fun initTimerSex() {
         Observable.intervalRange(0,6,0,1,TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
@@ -183,17 +194,18 @@ class GuidanceActivity : AppCompatActivity() {
             }
     }
 
-    //倒计时性别
-    fun initTimerInter() {
+    //倒计时选择分类的人--主页
+    fun initTimer() {
         Observable.intervalRange(0,6,0,1,TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 val l = 5 - it
                 if(l == 0L) {
-                    startActivity(Intent(this,InterestActivity::class.java))
+                    startActivity(Intent(this,MainActivity::class.java))
                     finish()
                 }
             }
     }
+
 
 }
