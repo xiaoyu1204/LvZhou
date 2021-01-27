@@ -37,12 +37,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/layout_title"/>
+
+                <ImageView
+                    android:id="@+id/submit_img_addimg"
+                    android:layout_width="@dimen/dp_70"
+                    android:layout_height="@dimen/dp_70"
+                    android:src="@drawable/ic_addimg" />
+
                 <EditText
                     android:id="@+id/edit_title"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:hint="输入标题"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_30"/>
+                    android:layout_height="@dimen/dp_50"/>
                 <EditText
                     android:id="@+id/edit_mood"
+                    android:hint="输入内容"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_100"/>
                 <androidx.constraintlayout.widget.ConstraintLayout

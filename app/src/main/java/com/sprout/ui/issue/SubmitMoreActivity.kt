@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.SparseArray
+import android.view.View
+import android.view.View.OnClickListener
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.kotlinbase.model.myitem.IItemClick
 import com.example.kotlinbase.utils.GlideEngine
@@ -25,10 +27,11 @@ import org.json.JSONArray
 /**
  * 动态数据的提交
  */
-class SubmitMoreActivity : BaseActivity<SubmitViewModel,ActivitySubmitMoreBinding>(R.layout.activity_submit_more,SubmitViewModel::class.java) {
+class SubmitMoreActivity : BaseActivity<SubmitViewModel,ActivitySubmitMoreBinding>(R.layout.activity_submit_more,SubmitViewModel::class.java) ,
+    OnClickListener{
 
     var imgs:MutableList<ImgData> = mutableListOf()
-    var max_img = 9
+    var max_img = 12
 
     lateinit var imgAdapter: SubmitImgAdapter
 
@@ -39,6 +42,10 @@ class SubmitMoreActivity : BaseActivity<SubmitViewModel,ActivitySubmitMoreBindin
         recyImgs.layoutManager = GridLayoutManager(mContext,3)
         recyImgs.adapter = imgAdapter
         imgAdapter.clickEvt = SubmitClickEvt()
+
+        //点击监听
+        mDataBinding.submitImgAddimg.setOnClickListener(this)
+
     }
 
     override fun initVM() {
@@ -95,6 +102,7 @@ class SubmitMoreActivity : BaseActivity<SubmitViewModel,ActivitySubmitMoreBindin
                 }
                 if(imgs.size > max_img){
                     imgs.removeLast()
+                    submit_img_addimg!!.visibility = View.GONE
                 }
                 imgAdapter.notifyDataSetChanged()
             }
@@ -111,17 +119,36 @@ class SubmitMoreActivity : BaseActivity<SubmitViewModel,ActivitySubmitMoreBindin
         override fun itemClick(data: ImgData) {
             Log.e("TAG", "itemClick: "+"加号外" )
             //当前点击的是加号
-            if(data.path.isNullOrEmpty()){
-                Log.e("TAG", "itemClick: "+"加号内" )
-                openPhoto()
-            }
+//            if(data.path.isNullOrBlank()){
+////            if(data.path.isNullOrEmpty()){
+//                Log.e("TAG", "itemClick: "+"加号内" )
+//                openPhoto()
+//            }
         }
     }
+
+//    inner class subAdd{
+//        fun clickAdd(data:ImgData){
+//            openPhoto()
+//        }
+//    }
 
     inner class SubmitClickEvt{
         fun clickDelete(data:ImgData){
             imgs.remove(data)
             imgAdapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.submit_img_addimg -> {
+                Log.e("TAG", "onClick: "+"submit_img_addimg" )
+                openPhoto()
+            }
+            R.id.edit_title -> {
+                Log.e("TAG", "onClick: "+"edit_title" )
+            }
         }
     }
 

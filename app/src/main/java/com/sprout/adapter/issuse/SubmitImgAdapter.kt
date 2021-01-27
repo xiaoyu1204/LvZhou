@@ -26,27 +26,28 @@ class SubmitImgAdapter(
     lateinit var clickEvt: SubmitMoreActivity.SubmitClickEvt
 
     override fun bindData(binding: ViewDataBinding, data: ImgData, layId: Int) {
+
         binding.setVariable(BR.submitImgClick,click)
 
-//        var img = binding.root.findView<ImageView>(R.id.img).value
-//        var imgDelete = binding.root.findView<ImageView>(R.id.img_delete).value
-//        if(data.path.isNullOrEmpty()){
+        var img = binding.root.findView<ImageView>(R.id.img).value
+        var imgDelete = binding.root.findView<ImageView>(R.id.img_delete).value
+        if(data.path.isNullOrEmpty()){
 //            img.setImageResource(R.drawable.ic_addimg)
 //            imgDelete.visibility = View.GONE
-//        }else{
-//            img.setImageURI(Uri.parse(data.path))
-//        }
-//        imgDelete.tag = data
-//        img.setOnClickListener {
-//            if(data.path.isNullOrEmpty()) return@setOnClickListener
-//            imgDelete.visibility = if (imgDelete.visibility == View.GONE) View.VISIBLE else View.GONE
-//        }
-//        imgDelete.setOnClickListener {
-//            if(clickEvt!=null){
-//                imgDelete.visibility = View.GONE
-//                clickEvt.clickDelete(imgDelete.tag as ImgData)
-//            }
-//        }
+        }else{
+            img.setImageURI(Uri.parse(data.path))
+        }
+        imgDelete.tag = data
+        img.setOnClickListener {
+            if(data.path.isNullOrEmpty()) return@setOnClickListener
+            imgDelete.visibility = if (imgDelete.visibility == View.GONE) View.VISIBLE else View.GONE
+        }
+        imgDelete.setOnClickListener {
+            if(clickEvt!=null){
+                imgDelete.visibility = View.GONE
+                clickEvt.clickDelete(imgDelete.tag as ImgData)
+            }
+        }
 
     }
 
